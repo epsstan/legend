@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: studio
+  namespace: legend
+  labels:
+    app: studio
+    ci.name: studio
+spec:
+  selector:
+    app: studio
+  ports:
+    - protocol: TCP
+      port: __LEGEND_STUDIO_PORT__
+      targetPort: __LEGEND_STUDIO_PORT__

@@ -63,4 +63,4 @@ generate_studio_config()
 
 generate_engine_config
 generate_sdlc_config
-#generate_studio_config
+generate_studio_config

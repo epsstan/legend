@@ -84,16 +84,35 @@ ping_sdlc()
         curl $test_url | jq
 }
 
+recreate_studio_config()
+{
+        kubectl delete configmap -n $EKS_LEGEND_NAMESPACE studio
+        kubectl create configmap -n $EKS_LEGEND_NAMESPACE studio --from-file=$STUDIO_CONFIG/config
+}
+
+delete_studio()
+{
+	kubectl delete -n $EKS_LEGEND_NAMESPACE -f $STUDIO_CONFIG/k8s
+}
+
+deploy_studio()
+{
+	recreate_studio_config
+	kubectl -n $EKS_LEGEND_NAMESPACE apply -f $STUDIO_CONFIG/k8s
+}
+
 delete_legend()
 {
 	delete_engine
 	delete_sdlc
+	delete_studio
 }
 
 deploy_legend()
 {
 	deploy_engine
 	deploy_sdlc
+	deploy_studio
 }
 
 get_legend()

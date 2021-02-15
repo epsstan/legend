@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studio
+  namespace: legend
+  labels:
+    app: studio
+    ci.name: studio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      # this identifes which pods are part of the deployment
+      ci.name: studio
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        # the labels repeat here
+        app: studio
+        ci.name: studio
+    spec:
+      containers:
+        - name: studio
+          image: finos/legend-studio:0.1.1
+          livenessProbe:
+            httpGet:
+              path: /studio/admin/healthcheck
+              port: __LEGEND_STUDIO_PORT__
+            initialDelaySeconds: 300
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /studio/admin/healthcheck
+              port: __LEGEND_STUDIO_PORT__
+            timeoutSeconds: 3
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+            - name: podinfo
+              mountPath: /podinfo
+              readOnly: true
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+      volumes:
+        - name: config
+          configMap:
+            name: studio
+        - name: podinfo
+          downwardAPI:
+            items:
+              - path: "labels"
+                fieldRef:
+                  fieldPath: metadata.labels
+              - path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
