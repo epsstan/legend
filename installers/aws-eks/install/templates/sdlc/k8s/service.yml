@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdlc
+  namespace: legend
+  labels:
+    app: sdlc
+    ci.name: sdlc
+spec:
+  selector:
+    app: sdlc
+  ports:
+    - protocol: TCP
+      port: __LEGEND_SDLC_PORT__
+      targetPort: __LEGEND_SDLC_PORT__

@@ -40,6 +40,12 @@ recreate_engine_config()
 	kubectl create configmap -n $EKS_LEGEND_NAMESPACE execution --from-file=$ENGINE_CONFIG/config
 }
 
+deploy_engine()
+{
+	recreate_engine_config
+        kubectl -n $EKS_LEGEND_NAMESPACE apply -f $ENGINE_CONFIG/k8s
+}
+
 ping_engine()
 {
 	elb_dns_name=`aws elbv2 describe-load-balancers | jq -r .LoadBalancers[0].DNSName`
@@ -48,15 +54,46 @@ ping_engine()
 	curl $test_url | jq
 }
 
+delete_engine()
+{
+        kubectl delete -n $EKS_LEGEND_NAMESPACE -f $ENGINE_CONFIG/k8s
+}
+
+recreate_sdlc_config()
+{
+	kubectl delete configmap -n $EKS_LEGEND_NAMESPACE sdlc
+	kubectl create configmap -n $EKS_LEGEND_NAMESPACE sdlc --from-file=$SDLC_CONFIG/config
+}
+
+delete_sdlc()
+{
+	kubectl delete -n $EKS_LEGEND_NAMESPACE -f $SDLC_CONFIG/k8s
+}
+
+deploy_sdlc()
+{
+	recreate_sdlc_config
+	kubectl -n $EKS_LEGEND_NAMESPACE apply -f $SDLC_CONFIG/k8s
+}
+
+ping_sdlc()
+{
+        elb_dns_name=`aws elbv2 describe-load-balancers | jq -r .LoadBalancers[0].DNSName`
+        local test_url="http://"$elb_dns_name"/sdlc/api/info"
+        echo -e "Testing Engine Url $test_url"
+        curl $test_url | jq
+}
+
 delete_legend()
 {
-	kubectl delete -n $EKS_LEGEND_NAMESPACE -f $ENGINE_CONFIG/k8s
+	delete_engine
+	delete_sdlc
 }
 
 deploy_legend()
 {
-	recreate_engine_config
-	kubectl -n $EKS_LEGEND_NAMESPACE apply -f $ENGINE_CONFIG/k8s
+	deploy_engine
+	deploy_sdlc
 }
 
 get_legend()

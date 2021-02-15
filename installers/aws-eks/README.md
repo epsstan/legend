@@ -58,7 +58,7 @@ The OpenID and OAuth configuration requires a Gitlab application to be registere
 * Redirect URI - Add the following redirect URIs 
 
 ```
-$ ./deploy.sh print_oauth (Terminal 2)
+$ ./deploy.sh print_oauth 
 ```
 * Enable the "Confidential" check box
 * Enable these scopes : openid, profile, api 
