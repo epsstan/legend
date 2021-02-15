@@ -3,6 +3,18 @@
 GITLAB_OAUTH_CLIENT_ID=$1
 GITLAB_OAUTH_SECRET=$2
 
+if [ -z $GITLAB_OAUTH_CLIENT_ID ]
+then
+	echo "GITLAB_OAUTH_CLIENT_ID not specified"
+	exit 1
+fi
+
+if [ -z $GITLAB_OAUTH_SECRET ]
+then
+	echo "GITLAB_OAUTH_SECRET not specified"
+	exit 1
+fi
+
 pwd=`readlink -f $(dirname $0)`
 generator_config=$pwd/env.sh 
 

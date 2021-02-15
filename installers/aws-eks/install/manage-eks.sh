@@ -27,16 +27,22 @@ install()
 	kubectl create namespace $EKS_LEGEND_NAMESPACE
 }
 
-get_nginx()
+get_ingress_ctrl()
 {
         kubectl get all -n ingress-nginx
 }
 
-deploy_ingress_controller()
+deploy_ingress_ctrl()
 {
         kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/aws/deploy.yaml
 
         kubectl apply -f $pwd/ingress-controller
+}
+
+delete_ingress_ctrl()
+{
+	kubectl delete -f $pwd/ingress-controller
+	kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/aws/deploy.yaml
 }
 
 
