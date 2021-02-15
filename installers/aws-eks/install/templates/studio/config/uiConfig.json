@@ -1,6 +1,7 @@
  {
     "appName": "studio",
-    "realm" : "QA",
+    "realm" : "DEMO",
+    "isInDemo": true,
     "execServer": "/exec",
     "sdlcServer": "/sdlc/api",
     "tracerServer" : "/tracer",
