@@ -25,9 +25,9 @@ $ ./manage-eks.sh install
 ### 2/ Deploy Nginx Ingress Controller 
 
 ```
-$ ./manage-eks.sh deploy_ingress_controller
+$ ./manage-eks.sh deploy_ingress_ctrl
 
-$ ./manage-eks.sh get_nginx
+$ ./manage-eks.sh get_ingress_ctrl
 
 ```
 
@@ -97,34 +97,12 @@ replicaset.apps/execution-6b988758b7   1         1         1       40m
 
 ```
 
+### 6/ Access Studio
 ```
-$ ./deploy.sh ping_engine
-Testing Engine Url http://a30b2dbadeda44dc3b26978c14998aa9-269ffe65790be5b6.elb.us-east-1.amazonaws.com/exec/api/server/v1/info
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   387  100   387    0     0   6046      0 --:--:-- --:--:-- --:--:--  6046
-{
-  "alloy": {
-    "server": {
-      "host": "execution-6b988758b7-ckpzs",
-      "startTime": "Fri Feb 12 02:52:01 UTC 2021",
-      "timeZone": "Etc/UTC"
-    },
-    "sdlc": {},
-    "deployment": {
-      "mode": "TEST_IGNORE_FUNCTION_MATCH"
-    }
-  },
-  "zipkin": {
-    "url": ""
-  },
-  "pure": {
-    "platform": "1.8.0",
-    "model": "unknown"
-  }
-}
-```
+./deploy.sh print | grep LEGEND_STUDIO_URL
+    16	LEGEND_STUDIO_URL=http://a585f868a3afa4b0887f0656c468e752-ea0106f8c53b3010.elb.us-east-1.amazonaws.com/studio
 
+```
 # References
 * AWS EKS Guide https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html
 * EKS Nginx Ingress Controller https://aws.amazon.com/blogs/opensource/network-load-balancer-nginx-ingress-controller-eks/
