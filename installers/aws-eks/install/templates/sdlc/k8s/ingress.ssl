@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sdlc
+  namespace: legend
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  labels:
+    app: sdlc
+    ci.name: sdlc
+spec:
+  tls:
+    - hosts:
+        - __DNS_NAME__
+      secretName: __TLS_SECRET_NAME__
+  rules:
+    - host: __DNS_NAME__
+      http:
+        paths:
+          - backend:
+              serviceName: sdlc
+              servicePort: __LEGEND_SDLC_PORT__
+            path: /sdlc
