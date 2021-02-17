@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: studio
-          image: finos/legend-studio:0.1.1
+          image: __LEGEND_STUDIO_VERSION__
           livenessProbe:
             httpGet:
               path: /studio/admin/healthcheck

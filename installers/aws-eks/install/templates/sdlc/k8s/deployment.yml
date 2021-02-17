@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: sdlc
-          image: finos/legend-sdlc-server:0.15.0
+          image: __LEGEND_SDLC_VERSION__
           livenessProbe:
             httpGet:
               path: /sdlc/admin/healthcheck

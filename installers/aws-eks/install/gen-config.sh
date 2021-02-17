@@ -42,11 +42,14 @@ find_replace()
 		sed -i 's~__GITLAB_PUBLIC_URL__'~$GITLAB_PUBLIC_URL'~g' $f
 		sed -i 's/__GITLAB_HOST__'/$GITLAB_HOST'/g' $f
 		sed -i 's/__GITLAB_PORT__'/$GITLAB_PORT'/g' $f
+		sed -i 's~__LEGEND_SDLC_VERSION__'~$LEGEND_SDLC_VERSION'~g' $f
 		sed -i 's/__LEGEND_SDLC_PORT__'/$LEGEND_SDLC_PORT'/g' $f
 		sed -i 's/__LEGEND_SDLC_ADMIN_PORT__'/$LEGEND_SDLC_ADMIN_PORT'/g' $f
 		sed -i 's~__LEGEND_SDLC_URL__'~$LEGEND_SDLC_URL'~g' $f
+		sed -i 's~__LEGEND_ENGINE_VERSION__'~$LEGEND_ENGINE_VERSION'~g' $f
 		sed -i 's/__LEGEND_ENGINE_PORT__'/$LEGEND_ENGINE_PORT'/g' $f
 		sed -i 's~__LEGEND_ENGINE_URL__'~$LEGEND_ENGINE_URL'~g' $f
+		sed -i 's~__LEGEND_STUDIO_VERSION__'~$LEGEND_STUDIO_VERSION'~g' $f
 		sed -i 's/__LEGEND_STUDIO_PORT__'/$LEGEND_STUDIO_PORT'/g' $f
 		sed -i 's~__LEGEND_STUDIO_URL__'~$LEGEND_STUDIO_URL'~g' $f
         done

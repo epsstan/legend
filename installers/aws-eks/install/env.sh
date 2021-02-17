@@ -6,6 +6,9 @@ pwd=`readlink -f $(dirname $0)`
 ## Fill in these values 
 ##########################################
 
+LEGEND_ENGINE_VERSION=finos/legend-engine-server:2.11.0
+LEGEND_SDLC_VERSION=finos/legend-sdlc-server:0.15.0
+LEGEND_STUDIO_VERSION=finos/legend-studio:0.1.1
 
 ##########################################
 # The values below are computed/static

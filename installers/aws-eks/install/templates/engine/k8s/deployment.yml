@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: execution
-          image: finos/legend-engine-server:2.11.0
+          image: __LEGEND_ENGINE_VERSION__
           command: ["java"]
           args: ["-Xmx3G", "-Xms256M", "-Xss4096k", "-cp", "/app/bin/*", "-Djava.security.krb5.conf=/etc/krb5.conf", "-Dfile.encoding=UTF8", "org.finos.legend.engine.server.Server", "server", "/config/config.json"]
           livenessProbe:

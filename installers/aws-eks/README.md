@@ -46,7 +46,7 @@ $ ./deploy.sh gen_secrets
 The container is run in the background.
 
 ```
-$ ./run-mongo.sh restart 
+$ sudo ./run-mongo.sh restart 
 ```
 
 ### 3/ Configure Gitlab Oauth 

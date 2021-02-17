@@ -6,7 +6,7 @@ pwd=`readlink -f $(dirname $0)`
 
 create_cluster()
 {
-	echo eksctl create cluster \
+	eksctl create cluster \
 		--name $EKS_CLUSTER \
 		--region $EKS_REGION \
 		--with-oidc \
@@ -17,13 +17,18 @@ create_cluster()
 
 configure_kubectl()
 {
-	echo aws eks --region $EKS_REGION update-kubeconfig --name $EKS_CLUSTER
+	aws eks --region $EKS_REGION update-kubeconfig --name $EKS_CLUSTER
 }
 
 install()
 {
 	create_cluster
 	configure_kubectl
+	create_namespace
+}
+
+create_namespace()
+{
 	kubectl create namespace $EKS_LEGEND_NAMESPACE
 }
 
