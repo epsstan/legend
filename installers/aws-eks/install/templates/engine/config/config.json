@@ -21,7 +21,7 @@
   },
   "pac4j": {
     "callbackPrefix": "",
-    "mongoUri": "mongodb://__MONGO_USER__:__MONGO_PASSWORD__@__MONGO_HOST_PORT__",
+    "mongoUri": "mongodb+srv://__MONGO_USER__:__MONGO_PASSWORD__@__MONGO_HOST_PORT__",
     "mongoDb": "legend",
     "bypassPaths": [
       "/api/server/v1/info"

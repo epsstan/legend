@@ -10,6 +10,9 @@ LEGEND_ENGINE_VERSION=finos/legend-engine-server:2.11.0
 LEGEND_SDLC_VERSION=finos/legend-sdlc-server:0.15.0
 LEGEND_STUDIO_VERSION=finos/legend-studio:0.1.1
 
+TLS_SECRET_NAME=legend-finos-tls
+DNS_NAME=legend-temp.finos.org
+
 ##########################################
 # The values below are computed/static
 ##########################################
@@ -35,11 +38,12 @@ else
 fi
 
 # Secrets 
-MONGO_PASSWORD=""
-if [ -e $WORK_DIR/mongo.pwd ];
-then
-	MONGO_PASSWORD=`cat $WORK_DIR/mongo.pwd`
-fi
+# TODO - re-enable
+# MONGO_PASSWORD=""
+# if [ -e $WORK_DIR/mongo.pwd ];
+# then
+# 	MONGO_PASSWORD=`cat $WORK_DIR/mongo.pwd`
+# fi
 
 GITLAB_ROOT_PASSWORD=""
 if [ -e $WORK_DIR/gitlab.pwd ];
@@ -49,7 +53,7 @@ fi
 
 # EKS
 EKS_CLUSTER=legend-integration
-EKS_REGION=us-east-1
+EKS_REGION=us-east-2
 EKS_LEGEND_NAMESPACE=legend
 EKS_NGINX_NAMESPACE=ingress-nginx
 ELB_DNS_NAME=`aws elbv2 describe-load-balancers 2>/dev/null | jq -r .LoadBalancers[0].DNSName`
@@ -64,8 +68,9 @@ GITLAB_HOST=gitlab.com
 GITLAB_PUBLIC_URL=https://$GITLAB_HOST
 
 # Mongo 
-MONGO_USER=admin
-MONGO_HOST_PORT=$HOST_DNS_NAME:27017
+MONGO_USER=alloy-deployer
+MONGO_PASSWORD=no80QkionRI0xFEP
+MONGO_HOST_PORT=alloycluster-rdzv8.mongodb.net
 
 # Engine
 LEGEND_ENGINE_PORT=6060

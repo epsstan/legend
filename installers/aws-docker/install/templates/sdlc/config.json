@@ -46,7 +46,7 @@ filterPriorities:
 
 pac4j:
   callbackPrefix: /api/pac4j/login
-  mongoUri: mongodb://__MONGO_USER__:__MONGO_PASSWORD__@__MONGO_HOST_PORT__
+  mongoUri: mongodb+srv://__MONGO_USER__:__MONGO_PASSWORD__@__MONGO_HOST_PORT__
   mongoDb: legend
   clients:
     - org.finos.legend.server.pac4j.gitlab.GitlabClient:

@@ -52,6 +52,8 @@ find_replace()
 		sed -i 's~__LEGEND_STUDIO_VERSION__'~$LEGEND_STUDIO_VERSION'~g' $f
 		sed -i 's/__LEGEND_STUDIO_PORT__'/$LEGEND_STUDIO_PORT'/g' $f
 		sed -i 's~__LEGEND_STUDIO_URL__'~$LEGEND_STUDIO_URL'~g' $f
+		sed -i 's~__TLS_SECRET_NAME__'~$TLS_SECRET_NAME'~g' $f
+		sed -i 's~__DNS_NAME__'~$DNS_NAME'~g' $f
         done
 }
 

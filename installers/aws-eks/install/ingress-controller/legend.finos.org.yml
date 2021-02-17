@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: legend-finos-cert
+spec:
+  secretName: __TLS_SECRET_NAME__
+  issuerRef:
+    name: letsencrypt
+  commonName: __DNS_NAME__
+  dnsNames:
+  - __DNS_NAME__
