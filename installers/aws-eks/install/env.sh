@@ -11,7 +11,7 @@ LEGEND_SDLC_VERSION=finos/legend-sdlc-server:0.15.0
 LEGEND_STUDIO_VERSION=finos/legend-studio:0.1.1
 
 TLS_SECRET_NAME=legend-finos-tls
-DNS_NAME=legend-temp.finos.org
+DNS_NAME=legend-test.finos.org
 
 ##########################################
 # The values below are computed/static
