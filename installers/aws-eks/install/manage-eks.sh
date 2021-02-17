@@ -41,12 +41,12 @@ deploy_ingress_ctrl()
 {
         kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/aws/deploy.yaml
 
-        kubectl apply -f $pwd/ingress-controller
+        kubectl apply -f $WORK_DIR/generated-ingress-config
 }
 
 delete_ingress_ctrl()
 {
-	kubectl delete -f $pwd/ingress-controller
+	kubectl delete -f $WORK_DIR/generated-ingress-config
 	kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/aws/deploy.yaml
 }
 

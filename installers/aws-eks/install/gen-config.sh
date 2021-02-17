@@ -25,6 +25,7 @@ templates=$pwd/templates
 engine_config=$WORK_DIR/generated-engine-config
 sdlc_config=$WORK_DIR/generated-sdlc-config
 studio_config=$WORK_DIR/generated-studio-config
+ingress_config=$WORK_DIR/generated-ingress-config
 
 echo "Generating configs to $WORK_DIR"
 
@@ -78,6 +79,14 @@ generate_studio_config()
 	find_replace $studio_config
 }
 
+generate_ingress_controller()
+{
+	rm -rf $ingress_config
+	cp -r $pwd/ingress-controller $ingress_config
+	find_replace $ingress_config
+}
+
 generate_engine_config
 generate_sdlc_config
 generate_studio_config
+generate_ingress_controller
