@@ -42,8 +42,5 @@ deploy_ingress_controller()
 {
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/aws/deploy.yaml
 
-	# TODO - remove cert manager on cluster deletion
-	kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.2.0/cert-manager.yaml
-
 	kubectl apply -f $pwd/ingress-controller
 }
