@@ -50,7 +50,7 @@ pac4j:
 
 gitLab:
   newProjectVisibility: public
-  projectTag: legend
+  projectTag: pure
   prod:
     server:
       scheme: https

@@ -6,8 +6,8 @@ pwd=`readlink -f $(dirname $0)`
 ## Fill in these values 
 ##########################################
 
-LEGEND_ENGINE_VERSION=finos/legend-engine-server:2.11.0
-LEGEND_SDLC_VERSION=finos/legend-sdlc-server:0.15.0
+LEGEND_ENGINE_VERSION=finos/legend-engine-server:2.14.0
+LEGEND_SDLC_VERSION=finos/legend-sdlc-server:0.18.0
 LEGEND_STUDIO_VERSION=finos/legend-studio:0.1.1
 
 TLS_SECRET_NAME=legend-finos-tls
@@ -56,7 +56,7 @@ EKS_CLUSTER=legend-integration
 EKS_REGION=us-east-2
 EKS_LEGEND_NAMESPACE=legend
 EKS_NGINX_NAMESPACE=ingress-nginx
-ELB_DNS_NAME=`aws elbv2 describe-load-balancers 2>/dev/null | jq -r .LoadBalancers[0].DNSName`
+ELB_DNS_NAME=`aws --region us-east-2 elbv2 describe-load-balancers 2>/dev/null | jq -r .LoadBalancers[0].DNSName`
 
 # Certs
 TRUSTSTORE_PASSWORD=changeit
@@ -64,7 +64,7 @@ TRUSTSTORE_PASSWORD=changeit
 # Gitlab 
 GITLAB_PORT=unused
 GITLAB_ROOT_USER=unused
-GITLAB_HOST=gitlab.com
+GITLAB_HOST=gitlab.legend.finos.org
 GITLAB_PUBLIC_URL=https://$GITLAB_HOST
 
 # Mongo 
