@@ -53,5 +53,13 @@ delete_ingress_ctrl()
 	kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/aws/deploy.yaml
 }
 
+enable_logs()
+{
+	# Install Fluentd to send logs to CloudWatch
+	kubectl apply -f https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/cloudwatch-namespace.yaml
+	kubectl create configmap cluster-info --from-literal=cluster.name=$EKS_CLUSTER --from-literal=logs.region=$EKS_REGION -n amazon-cloudwatch
+	kubectl apply -f https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/fluentd/fluentd.yaml
+}
+
 
 $*

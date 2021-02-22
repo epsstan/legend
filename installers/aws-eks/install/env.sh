@@ -54,7 +54,7 @@ then
 fi
 
 # EKS
-EKS_CLUSTER=legend-integration
+EKS_CLUSTER=finos-legend-shared
 EKS_REGION=us-east-2
 EKS_LEGEND_NAMESPACE=legend
 EKS_NGINX_NAMESPACE=ingress-nginx
