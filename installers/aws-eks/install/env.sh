@@ -11,7 +11,8 @@ LEGEND_SDLC_VERSION=finos/legend-sdlc-server:0.18.0
 LEGEND_STUDIO_VERSION=finos/legend-studio:0.1.1
 
 TLS_SECRET_NAME=legend-finos-tls
-DNS_NAME=legend-test.finos.org
+#DNS_NAME=legend-test.finos.org
+DNS_NAME=legend.finos.org
 
 ##########################################
 # The values below are computed/static
@@ -26,6 +27,7 @@ mkdir -p $CONTAINER_WORK_DIR
 ENGINE_CONFIG=$WORK_DIR/generated-engine-config
 SDLC_CONFIG=$WORK_DIR/generated-sdlc-config
 STUDIO_CONFIG=$WORK_DIR/generated-studio-config
+DOCS_CONFIG=$WORK_DIR/generated-docs-config
 
 type=ec2
 if [ $type == "ec2" ]

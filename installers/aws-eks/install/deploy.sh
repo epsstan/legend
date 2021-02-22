@@ -101,6 +101,16 @@ deploy_studio()
 	kubectl -n $EKS_LEGEND_NAMESPACE apply -f $STUDIO_CONFIG/k8s
 }
 
+delete_docs()
+{
+	kubectl delete -n $EKS_LEGEND_NAMESPACE -f $DOCS_CONFIG/k8s
+}
+
+deploy_docs()
+{
+	kubectl -n $EKS_LEGEND_NAMESPACE apply -f $DOCS_CONFIG/k8s
+}
+
 delete_legend()
 {
 	delete_engine
