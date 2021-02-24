@@ -1,4 +1,4 @@
-applicationName: Legend LEGEND_SDLC
+applicationName: Legend SDLC
 
 server:
   adminContextPath: /sdlc/admin
