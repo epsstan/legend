@@ -1,0 +1,50 @@
+version: '3.6'
+services:
+  mongod:
+    image: mongo:4.0
+    restart: unless-stopped
+    command: --auth
+    ports:
+      - $MONGO_PORT:$MONGO_PORT
+    environment:
+       MONGO_INITDB_ROOT_USERNAME: $MONGO_USER
+       MONGO_INITDB_ROOT_PASSWORD: $MONGO_PASSWORD
+    networks:
+      - legend
+  engine:
+    image: finos/legend-engine-server:2.6.1-SNAPSHOT
+    restart: unless-stopped
+    entrypoint: /bin/sh
+    command: -c 'java -Xmx2G -Xms256M -Xss4M -Djavax.net.ssl.trustStore=/ssl/truststore.jks -Djavax.net.ssl.trustStorePassword=changeit -cp /app/bin/*-shaded.jar -Dfile.encoding=UTF8 org.finos.legend.engine.server.Server server /config/config.json'
+    ports:
+      - $LEGEND_ENGINE_PORT:$LEGEND_ENGINE_PORT
+    volumes:
+      - $WORK_DIR/generated-engine-config:/config
+      - $WORK_DIR/ssl:/ssl
+    depends_on:
+      - mongod
+    networks:
+      - legend
+  gitlab:
+     image: 'gitlab/gitlab-ce:latest'
+     restart: always
+     hostname: '$GITLAB_HOST'
+     environment:
+        GITLAB_POST_RECONFIGURE_SCRIPT: "gitlab-rails runner 'ApplicationSetting.last.update_attributes(signup_enabled: false)'"
+        GITLAB_OMNIBUS_CONFIG: |
+          # Add any other gitlab.rb configuration here, each on its own line
+          external_url 'https://$GITLAB_HOST:6443'
+          gitlab_rails['lfs_enabled'] = true
+          nginx['listen_port'] = 443
+          nginx['ssl_certificate'] = '$CERT_FILE'
+          nginx['ssl_certificate_key'] = '$KEY_FILE'
+          letsencrypt['enable'] = false
+          gitlab_rails['initial_root_password'] = '$GITLAB_ROOT_PASSWORD'
+     ports:
+       - '$GITLAB_PORT:443'
+     volumes:
+       - $GITLAB_DATA_DIR:/etc/gitlab
+     networks:
+       - legend
+networks:
+   legend: {}
