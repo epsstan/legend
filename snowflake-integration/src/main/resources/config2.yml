@@ -1,0 +1,26 @@
+account: __FIXME__
+warehouse: LEGENDRO_WH
+database: KNOEMA_RENEWABLES_DATA_ATLAS
+schema: RENEWABLES
+username: LEGENDRO3
+encryptedKeyFile: /keys/legendro3.rsa_key.p8
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 9090
+  adminConnectors:
+    - type: http
+      port: 9095
+
+# Logging settings.
+logging:
+  level: INFO
+  appenders:
+    - type: console
+    - type: file
+      currentLogFilename: './logs/application.log'
+      archivedLogFilenamePattern: './logs/application-%d-%i.log.gz'
+      archive: true
+      archivedFileCount: 7
+      maxFileSize: '1MiB'

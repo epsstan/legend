@@ -1,0 +1,8 @@
+# Alpine Linux with OpenJDK JRE
+FROM openjdk:11
+
+# copy jar
+COPY target/snowflake-integration-1.0-SNAPSHOT.jar /app.jar
+
+# run application with this command line
+CMD java -cp /app.jar org.demo.snowflakeintegration.app.SnowflakeIntegrationApp server /config/config2.yml
