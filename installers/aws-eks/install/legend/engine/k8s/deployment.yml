@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: execution
+  namespace: legend
+  labels:
+    app: execution
+    ci.name: execution
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      # this identifes which pods are part of the deployment
+      ci.name: execution
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        # the labels repeat here
+        app: execution
+        ci.name: execution
+    spec:
+      containers:
+        - name: execution
+          image: finos/legend-engine-server:2.11.0
+          command: ["java"]
+          args: ["-Xmx3G", "-Xms256M", "-Xss4096k", "-cp", "/app/bin/alloy-execution-server.jar", "-Djava.security.krb5.conf=/etc/krb5.conf", "-Dfile.encoding=UTF8", "com.gs.alloy.server.Server", "server", "/config/config.json"]
+          livenessProbe:
+            httpGet:
+              path: /exec/admin/healthcheck
+              port: 6060
+            initialDelaySeconds: 300
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /exec/admin/healthcheck
+              port: 6060
+            timeoutSeconds: 3
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+            - name: podinfo
+              mountPath: /podinfo
+              readOnly: true
+          resources:
+            limits:
+              cpu: 4
+              memory: 4Gi
+            requests:
+              cpu: 1500m
+              memory: 3Gi
+      volumes:
+        - name: config
+          configMap:
+            name: execution
+        - name: podinfo
+          downwardAPI:
+            items:
+              - path: "labels"
+                fieldRef:
+                  fieldPath: metadata.labels
+              - path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
