@@ -32,7 +32,7 @@ export class LegendPipelineStack extends Stack {
                 actionName: 'Legend',
                 output: legendSource,
                 oauthToken: githubSecret,
-                owner: 'hagerupe',
+                owner: 'epsstan',
                 repo: 'legend',
                 trigger: GitHubTrigger.POLL
             }),
