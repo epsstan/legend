@@ -3,6 +3,7 @@ import * as cdk8s from 'cdk8s';
 import * as k8s from "cdk8s-plus/lib/imports/k8s";
 import * as fs from "fs";
 import * as path from "path";
+import { v4 as uuidv4 } from 'uuid';
 
 export interface LegendStudioChartProps {
     readonly imageId: string,
@@ -45,6 +46,7 @@ export class LegendStudioChart extends cdk8s.Chart {
 
         const app = 'legend-studio'
         const service = app + "-service"
+        const configId = uuidv4()
         new k8s.Deployment(this, "LegendStudio", {
             spec: {
                 selector: {
@@ -66,7 +68,7 @@ export class LegendStudioChart extends cdk8s.Chart {
                                 image: props.imageId,
                                 volumeMounts: [
                                     {
-                                        name: 'configurations',
+                                        name: configId,
                                         mountPath: '/config'
                                     }
                                 ]
@@ -74,7 +76,7 @@ export class LegendStudioChart extends cdk8s.Chart {
                         ],
                         volumes: [
                             {
-                                name: 'configurations',
+                                name: configId,
                                 configMap: {
                                     name: config.name,
                                     items: [

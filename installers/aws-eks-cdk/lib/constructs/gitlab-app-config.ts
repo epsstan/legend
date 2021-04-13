@@ -1,14 +1,10 @@
 import cfn = require('@aws-cdk/aws-cloudformation');
 import cdk = require('@aws-cdk/core');
 import {Stack} from "@aws-cdk/core";
-import * as secretmanager from "@aws-cdk/aws-secretsmanager";
 import * as lambda from '@aws-cdk/aws-lambda';
-import {ManagedPolicy} from "@aws-cdk/aws-iam";
-import * as fs from "fs";
-import * as path from "path";
-import * as iam from "@aws-cdk/aws-iam";
-import {engineUrl, gitlabDomain, sdlcUrl, studioUrl} from "../utils";
+import {engineUrl, sdlcUrl, studioUrl} from "../utils";
 import {LegendInfrastructureStageProps} from "../legend-infrastructure-stage";
+import { v4 as uuidv4 } from 'uuid';
 
 export interface GitlabAppConfigProps {
     readonly secret: string,
@@ -35,7 +31,7 @@ export class GitlabAppConfig extends cdk.Construct {
     public readonly secret: string;
 
     constructor(scope: cdk.Construct, id: string, props: GitlabAppConfigProps) {
-        super(scope, id);
+        super(scope, id + uuidv4().replace(/-/g, ''));
 
         const functionArn = `arn:aws:lambda:${Stack.of(this).region}:${Stack.of(this).account}:function:GitlabAppConfig`
         const lambdaSingleton = lambda.Function.fromFunctionAttributes(this, "GitlabAppConfigFunction", { functionArn: functionArn })
