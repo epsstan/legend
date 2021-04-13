@@ -1,0 +1,301 @@
+---
+# Source: aws-load-balancer-controller/templates/webhook.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: aws-load-balancer-tls
+  namespace: kube-system
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+type: kubernetes.io/tls
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURQekNDQWllZ0F3SUJBZ0lRQ1B4UW51T21odWJsa1IvSU50eWFJVEFOQmdrcWhraUc5dzBCQVFzRkFEQXEKTVNnd0pnWURWUVFERXg5aGQzTXRiRzloWkMxaVlXeGhibU5sY2kxamIyNTBjbTlzYkdWeUxXTmhNQjRYRFRJeApNREl4TXpFNU1UWTFObG9YRFRNeE1ESXhNVEU1TVRZMU5sb3dLakVvTUNZR0ExVUVBeE1mWVhkekxXeHZZV1F0ClltRnNZVzVqWlhJdFkyOXVkSEp2Ykd4bGNpMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSktaTzhPNnVDNms0MnRFTXp6TXFSNVA5WTRPOEE3UWJOdmdkR281QkY3VkF3a1E3azhpaFFJcgova0FUc3FYbnRldGlTTXZDR3ZkdjJPdllYU3g1eWlYRzh1Tm95NG9vWTcySS9Wd04zTk85WDY2SnByTEo0aEM4Ci9jTXpwMjVoVFhIL2g3UzJxZjVRQUZxRXhWL240ZnAzOFZpQU1ITWVIQ3REQ1lCTkxGR0RxOS9ENVpEclRSMzgKSUVjNzY4VzNEb1BFeGc3WXB4RkwwczVZY0wraG9tZk9hUm1vYzdFUmhCQ0pMWmZKd2FvMTJpU1dMOUUzaWR1YQpuRmRtWEpmSDVEdlB6TFNVZnhlazJ5VGNpVVRwK2tZWmt6RS8vYk8zUytlTDhiQ2pwbjdtSnpGSkE0RzV1d3l6ClBGQ1RFSkppSmx2eE5abzZYWGNTeXZOaWVBNThkaXNDQXdFQUFhTmhNRjh3RGdZRFZSMFBBUUgvQkFRREFnS2sKTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREFqQVBCZ05WSFJNQkFmOEVCVEFEQVFILwpNQjBHQTFVZERnUVdCQlJEUER6L0VxRHNaaE5NUXJCaXp6aDN2OFRPc3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DCkFRRUFLSFFKeW0wbVl1aERWQnZjYkpJMHRJTzFpaTFUWS9ITWt3bjdLYXZEazZEOFJNVysrc1BQM3Zwd0MwK1AKRWgwSVBaL1VNL0xKY1I2bjJycFRzWUFNL0NuUUMrZUVUdmZkblVVcnd5cVdUcmJFbG83dU1Vazl5UjBkTjdyeQpxTG04NHF1eitYWFk4NXJGREhVMElXUzFyRTVJUi9KNVprRnl6Q0cxb2FKWU9KZ1hXUmR3RXdNbUpVR002N2M2CnVUTENvdTJ3Z3I4cUlQQ2JqM2RveE9ibEVDcmo5UFM2MGlIM1VRblkzNGVjMkhjNktzWTJHSWtJcVAwemtoRmMKWjVSNzUyemNTSFRFNE45RlFwblFUUjN3MnVYcnFydTV6Z2cvV2IzTkhLcUc0Q0xjVjdqTmh3ajl0Q2RJanpLQwo4WjgyR3JubjR3ZUh3T0hBZ2RDNzZ3SFo5UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUR6VENDQXJXZ0F3SUJBZ0lRWWZhcXk4ZFFrLzlpUDVyRzdBQ2IvakFOQmdrcWhraUc5dzBCQVFzRkFEQXEKTVNnd0pnWURWUVFERXg5aGQzTXRiRzloWkMxaVlXeGhibU5sY2kxamIyNTBjbTlzYkdWeUxXTmhNQjRYRFRJeApNREl4TXpFNU1UWTFObG9YRFRNeE1ESXhNVEU1TVRZMU5sb3dTakZJTUVZR0ExVUVBeE0vYkdWblpXNWtiR1ZuClpXNWtZMngxYzNSbGNtTm9ZWEowWVhkemJHOWhaR0poYkdGdVkyVnlaVGN4WmpNM016a3RZWGR6TFd4dllXUXQKWW1Gc1lXNWpNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQTNlcVorMzRkNTZaYwpicklLWlFYV3RmQkdSa0xXSDZkNGFIbC8weFhBVVdGL3EyTXI2VmxPQTQvRU9yeWhRb2tzQ05lM3NHT29UL1dTClFGeGd1SEFvTjJ6V2x6c1oyeFhXRTNDSUVpVFZOWFpzQ2J5WkFILzE3QVMvK2lCbWpDUnpXNURabXNKWjNkYTYKNmwxeHZ1ZHBFMlJwRTg4VDd5dmhhZ2hSbzdETW5CbEJTbHdxN1BYdE95Wlc2REhVcms5UWh0bE5JRUpZSmdnTAowUVREYjhwL3RHaEtyNS8xaGprZVZNcUxDVWIvSGdXamR5Mk1uRCtjclhwSnB5eklzTlhuYi8vYzNMSzVsZ3ZUCjF2VkFoQkk2MDNwcXpUWDRwTEFzbGV6SWJyTjFHcE5hM095QVpvMGlsY29EOTMrS0QwUHhQbXpmWFlmblNFd3kKVnQzTGdXQXRzd0lEQVFBQm80SE9NSUhMTUE0R0ExVWREd0VCL3dRRUF3SUZvREFkQmdOVkhTVUVGakFVQmdncgpCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEQVlEVlIwVEFRSC9CQUl3QURBZkJnTlZIU01FR0RBV2dCUkRQRHovCkVxRHNaaE5NUXJCaXp6aDN2OFRPc3pCckJnTlZIUkVFWkRCaWdpMWhkM010Ykc5aFpDMWlZV3hoYm1ObGNpMTMKWldKb2IyOXJMWE5sY25acFkyVXVhM1ZpWlMxemVYTjBaVzJDTVdGM2N5MXNiMkZrTFdKaGJHRnVZMlZ5TFhkbApZbWh2YjJzdGMyVnlkbWxqWlM1cmRXSmxMWE41YzNSbGJTNXpkbU13RFFZSktvWklodmNOQVFFTEJRQURnZ0VCCkFCb3REcEY4VUpLMEd2VHE2YVc3RnNZWFdsQkFYSjFEZ3pJdGRZQ1BHSTFuNUNmazF6S2owN2t5TTV1NFIwZEEKbW5qYko3ZllIT05zc2xwL05ZbVVkeERIZUJrMHlGdG1mTlVzOFdtS2crTTlJcHBacll1alN0Rk93OEU4c3Y1cgo5TlA3VnIvdmhXNDF3eDVEb3BTNjJET1RmcjVOWnlPcTlTNCt1cHRpNXFnVVlkMWYxb25SK0xtcU1sa3dNU0lECk5oOU5ORkZkbGcrTFkvUE9Ja1dHZDNER2poMHJoeis0SHdCMUtva0lUMFh0Nm1VZW9lRXZSdUlCWm40cCszd1UKR3VDdU9Lb0hvMnNIZzdCMjVyY0x6SnF6ZWtmbjBSVmlwbW5XcGo2TXAxdUhsK3hkZU5DS2ZObWVHNm0wdm9VdQpKUFpFN3l0U1pQd2ljTHlHa3lxUGx3UT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBM2VxWiszNGQ1NlpjYnJJS1pRWFd0ZkJHUmtMV0g2ZDRhSGwvMHhYQVVXRi9xMk1yCjZWbE9BNC9FT3J5aFFva3NDTmUzc0dPb1QvV1NRRnhndUhBb04yeldsenNaMnhYV0UzQ0lFaVRWTlhac0NieVoKQUgvMTdBUy8raUJtakNSelc1RFptc0paM2RhNjZsMXh2dWRwRTJScEU4OFQ3eXZoYWdoUm83RE1uQmxCU2x3cQo3UFh0T3laVzZESFVyazlRaHRsTklFSllKZ2dMMFFURGI4cC90R2hLcjUvMWhqa2VWTXFMQ1ViL0hnV2pkeTJNCm5EK2NyWHBKcHl6SXNOWG5iLy9jM0xLNWxndlQxdlZBaEJJNjAzcHF6VFg0cExBc2xleklick4xR3BOYTNPeUEKWm8waWxjb0Q5MytLRDBQeFBtemZYWWZuU0V3eVZ0M0xnV0F0c3dJREFRQUJBb0lCQVFDdzVybzNHL01VM2E0agpZL1FiVWdzMTM4TDFjWVFsbWFmSGlNdFg1cWYzZDhTQlNENFI5Mm5VTnYvVFh0a2lKQjBoTTIwdnhGSEE0OTdoClJZS29wR2U2dngxVlV2eXFnLzZ5WW10bUkweC9JTmJBOEVIN2Z3WDRUbFVIUEZyaTdvK3k5NFl2OHl3V1JuMmMKSkQ5dlVpT1dITjRTdDJtSnFDNDZDMFdoT21meEtraWwrdVZuYW9GMXRyM3RmSjNwaE9WTjc5VDNNREhJU0h3dgp1TTNRNjQvOXA2VVVWMUFnYU5DbGgxeFNNWDYyT1dJdDRraUF0NWRHMUJVaGQ5b3phVnZJRUhEaW1qQlpaTW4rCk01UjJ6UEwvWVNNY2pXT2ZiMzMwZ2NjRm1XYWRsalZzWE4rL0RVVnhLWERveTUvdlRpMmZTNzBRNUx1UFdnbWkKMEpvTjJaVUJBb0dCQU9sNTR0bXh0NEJUUWRqQVZxV1hBeG9FYXNaRUxjT0x2NUdGR3V4alVBUWVDZzRVTFplVgpWWjZRaWV3Z0E5VDZVeE5TL0pUNDZSYlhpNXJQUlgvTGNsZzVBVFN4SktuQkRXVklpdmlpNXE0SlJRN0ZNdUZtCjMzdVhDWUdJVUhKSzZUM1d3SVV0OTM5M21UajlFV08vcE1aR25lM2x6UkVnbnlpWXlMbVlXK2VCQW9HQkFQTlQKT2tLTFIyWHpqeE1jTks4SjlKaytkeklZcDlYN3dGR3V6eEtYbDdlNHBzdUVIWFdUYllnc2N5UnU5RzhVMkRnTQpzQkQyVCs2ZE4wZUJkdUxXdUUxYXQwazczMFhSdm8rZ3JpS2JZVGU3SVVMdklhUjliY0tCQmV4cjFNd0Z1V0NjCkJjNzBCQ2lFckdvS3NQd0lXbDZrbU1BWnB2MFU0cjU3UE9Fd3dJOHpBb0dCQU9UQmU3YjRIV2NxTEJZSFBkNDQKdTkwOS9yQU1GUnJIVGdkeWR4S3RxN1NkQ2hVSlNES0JLc2FWcjgwZkFTSW5za1g0eFduaEIrQk5pSWRDRmtKRQpQK0NZMmNtYTF1Vk1OYWZMRC83VS9WZi8xUjNIc1RhUDZOL2ErSUZsNGd4WndYWEplQkFGSGI1U25GbnQrcC9WCkljanpYOEc3cXRUaE5aQTlRazQyTGJZQkFvR0FZcFFLVzJFLzZNNzIzUUFsVy9ERmxyd1c0RVhhNFRkZ0gvZVoKVHVmNWdHWWZ0UDN1VFc4UUJnWTBFOE9iNWREbEZEZ1hzSmVKcEpzdkJSb3ZSeEZFazVvMy9VUnpYVDd2WEJMMQoyWEZudm9OaW8xSnNKODdsQTlMdnltdVpSNXJlRW9URFdhZkVjNEhrdEFWbTFJU3h6L3dSSW1xQ0c3QTFlSVJICkV0aUVlcjhDZ1lBcmlmSkhoNU9ESjNSN1NNeWpvMjNPbUoraGE4S1ZwN3lRR1dVRFdmcTdoQkxQTjNURHlXSUcKRzVpbmhGMkZxTHBENHFnQVQvcXpsQTg1TXVQSmxTelFQVy9VQitPTXZYaHJPakJqbkpSODFZZHpQTzdMZzV3VQpXQlM1R014Sm9ycmRJdHZXYnhjTWZTQm1TUmJ5QkYyN1BKTzdyekltRk9QeHQ0aFFxRUV1WWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+---
+# Source: aws-load-balancer-controller/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: legendlegendclusterchartawsloadbalancere71f3739-aws-load-balanc-role
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+rules:
+- apiGroups: ["elbv2.k8s.aws"]
+  resources: [targetgroupbindings]
+  verbs: [create, delete, get, list, patch, update, watch]
+- apiGroups: [""]
+  resources: [events]
+  verbs: [create, patch]
+- apiGroups: [""]
+  resources: [pods]
+  verbs: [get, list, watch]
+- apiGroups: ["networking.k8s.io"]
+  resources: [ingressclasses]
+  verbs: [get, list, watch]
+- apiGroups: ["", "extensions", "networking.k8s.io"]
+  resources: [services, ingresses]
+  verbs: [get, list, patch, update, watch]
+- apiGroups: [""]
+  resources: [nodes, secrets, namespaces, endpoints]
+  verbs: [get, list, watch]
+- apiGroups: ["elbv2.k8s.aws", "", "extensions", "networking.k8s.io"]
+  resources: [targetgroupbindings/status, pods/status, services/status, ingresses/status]
+  verbs: [update, patch]
+---
+# Source: aws-load-balancer-controller/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: legendlegendclusterchartawsloadbalancere71f3739-aws-load-balanc-rolebinding
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: legendlegendclusterchartawsloadbalancere71f3739-aws-load-balanc-role
+subjects:
+- kind: ServiceAccount
+  name: aws-load-balancer-controller
+  namespace: kube-system
+---
+# Source: aws-load-balancer-controller/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: legendlegendclusterchartawsloadbalancere71f3739-aws-load-balanc-leader-election-role
+  namespace: kube-system
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+rules:
+- apiGroups: [""]
+  resources: [configmaps]
+  verbs: [create]
+- apiGroups: [""]
+  resources: [configmaps]
+  resourceNames: [aws-load-balancer-controller-leader]
+  verbs: [get, patch, update]
+---
+# Source: aws-load-balancer-controller/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: legendlegendclusterchartawsloadbalancere71f3739-aws-load-balanc-leader-election-rolebinding
+  namespace: kube-system
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: legendlegendclusterchartawsloadbalancere71f3739-aws-load-balanc-leader-election-role
+subjects:
+- kind: ServiceAccount
+  name: aws-load-balancer-controller
+  namespace: kube-system
+---
+# Source: aws-load-balancer-controller/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws-load-balancer-webhook-service
+  namespace: kube-system
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ports:
+  - port: 443
+    targetPort: webhook-server
+  selector:
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+---
+# Source: aws-load-balancer-controller/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: legendlegendclusterchartawsloadbalancere71f3739-aws-load-balanc
+  namespace: kube-system
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aws-load-balancer-controller
+      app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aws-load-balancer-controller
+        app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+    spec:
+      serviceAccountName: aws-load-balancer-controller
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: aws-load-balancer-tls
+      securityContext:
+        fsGroup: 65534
+      containers:
+      - name: aws-load-balancer-controller
+        args:
+        - --cluster-name=LegendClusterA6751FE1-01ceef35e1af47c1bb617e8c66632711
+        - --ingress-class=alb
+        - --aws-region=us-east-1
+        - --aws-vpc-id=vpc-0cbc94eccd49ef034
+        command:
+        - /controller
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+        image: "602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-load-balancer-controller:v2.1.2"
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+        ports:
+        - name: webhook-server
+          containerPort: 9443
+          protocol: TCP
+        - name: metrics-server
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          {}
+        livenessProbe:
+          failureThreshold: 2
+          httpGet:
+            path: /healthz
+            port: 61779
+            scheme: HTTP
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+      terminationGracePeriodSeconds: 10
+---
+# Source: aws-load-balancer-controller/templates/webhook.yaml
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: aws-load-balancer-webhook
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+webhooks:
+- clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURQekNDQWllZ0F3SUJBZ0lRQ1B4UW51T21odWJsa1IvSU50eWFJVEFOQmdrcWhraUc5dzBCQVFzRkFEQXEKTVNnd0pnWURWUVFERXg5aGQzTXRiRzloWkMxaVlXeGhibU5sY2kxamIyNTBjbTlzYkdWeUxXTmhNQjRYRFRJeApNREl4TXpFNU1UWTFObG9YRFRNeE1ESXhNVEU1TVRZMU5sb3dLakVvTUNZR0ExVUVBeE1mWVhkekxXeHZZV1F0ClltRnNZVzVqWlhJdFkyOXVkSEp2Ykd4bGNpMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSktaTzhPNnVDNms0MnRFTXp6TXFSNVA5WTRPOEE3UWJOdmdkR281QkY3VkF3a1E3azhpaFFJcgova0FUc3FYbnRldGlTTXZDR3ZkdjJPdllYU3g1eWlYRzh1Tm95NG9vWTcySS9Wd04zTk85WDY2SnByTEo0aEM4Ci9jTXpwMjVoVFhIL2g3UzJxZjVRQUZxRXhWL240ZnAzOFZpQU1ITWVIQ3REQ1lCTkxGR0RxOS9ENVpEclRSMzgKSUVjNzY4VzNEb1BFeGc3WXB4RkwwczVZY0wraG9tZk9hUm1vYzdFUmhCQ0pMWmZKd2FvMTJpU1dMOUUzaWR1YQpuRmRtWEpmSDVEdlB6TFNVZnhlazJ5VGNpVVRwK2tZWmt6RS8vYk8zUytlTDhiQ2pwbjdtSnpGSkE0RzV1d3l6ClBGQ1RFSkppSmx2eE5abzZYWGNTeXZOaWVBNThkaXNDQXdFQUFhTmhNRjh3RGdZRFZSMFBBUUgvQkFRREFnS2sKTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREFqQVBCZ05WSFJNQkFmOEVCVEFEQVFILwpNQjBHQTFVZERnUVdCQlJEUER6L0VxRHNaaE5NUXJCaXp6aDN2OFRPc3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DCkFRRUFLSFFKeW0wbVl1aERWQnZjYkpJMHRJTzFpaTFUWS9ITWt3bjdLYXZEazZEOFJNVysrc1BQM3Zwd0MwK1AKRWgwSVBaL1VNL0xKY1I2bjJycFRzWUFNL0NuUUMrZUVUdmZkblVVcnd5cVdUcmJFbG83dU1Vazl5UjBkTjdyeQpxTG04NHF1eitYWFk4NXJGREhVMElXUzFyRTVJUi9KNVprRnl6Q0cxb2FKWU9KZ1hXUmR3RXdNbUpVR002N2M2CnVUTENvdTJ3Z3I4cUlQQ2JqM2RveE9ibEVDcmo5UFM2MGlIM1VRblkzNGVjMkhjNktzWTJHSWtJcVAwemtoRmMKWjVSNzUyemNTSFRFNE45RlFwblFUUjN3MnVYcnFydTV6Z2cvV2IzTkhLcUc0Q0xjVjdqTmh3ajl0Q2RJanpLQwo4WjgyR3JubjR3ZUh3T0hBZ2RDNzZ3SFo5UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    service:
+      name: aws-load-balancer-webhook-service
+      namespace: kube-system
+      path: /mutate-v1-pod
+  failurePolicy: Fail
+  name: mpod.elbv2.k8s.aws
+  admissionReviewVersions:
+  - v1beta1
+  namespaceSelector:
+    matchExpressions:
+    - key: elbv2.k8s.aws/pod-readiness-gate-inject
+      operator: In
+      values:
+      - enabled
+  rules:
+  - apiGroups:
+    - ""
+    apiVersions:
+    - v1
+    operations:
+    - CREATE
+    resources:
+    - pods
+  sideEffects: None
+- clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURQekNDQWllZ0F3SUJBZ0lRQ1B4UW51T21odWJsa1IvSU50eWFJVEFOQmdrcWhraUc5dzBCQVFzRkFEQXEKTVNnd0pnWURWUVFERXg5aGQzTXRiRzloWkMxaVlXeGhibU5sY2kxamIyNTBjbTlzYkdWeUxXTmhNQjRYRFRJeApNREl4TXpFNU1UWTFObG9YRFRNeE1ESXhNVEU1TVRZMU5sb3dLakVvTUNZR0ExVUVBeE1mWVhkekxXeHZZV1F0ClltRnNZVzVqWlhJdFkyOXVkSEp2Ykd4bGNpMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSktaTzhPNnVDNms0MnRFTXp6TXFSNVA5WTRPOEE3UWJOdmdkR281QkY3VkF3a1E3azhpaFFJcgova0FUc3FYbnRldGlTTXZDR3ZkdjJPdllYU3g1eWlYRzh1Tm95NG9vWTcySS9Wd04zTk85WDY2SnByTEo0aEM4Ci9jTXpwMjVoVFhIL2g3UzJxZjVRQUZxRXhWL240ZnAzOFZpQU1ITWVIQ3REQ1lCTkxGR0RxOS9ENVpEclRSMzgKSUVjNzY4VzNEb1BFeGc3WXB4RkwwczVZY0wraG9tZk9hUm1vYzdFUmhCQ0pMWmZKd2FvMTJpU1dMOUUzaWR1YQpuRmRtWEpmSDVEdlB6TFNVZnhlazJ5VGNpVVRwK2tZWmt6RS8vYk8zUytlTDhiQ2pwbjdtSnpGSkE0RzV1d3l6ClBGQ1RFSkppSmx2eE5abzZYWGNTeXZOaWVBNThkaXNDQXdFQUFhTmhNRjh3RGdZRFZSMFBBUUgvQkFRREFnS2sKTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREFqQVBCZ05WSFJNQkFmOEVCVEFEQVFILwpNQjBHQTFVZERnUVdCQlJEUER6L0VxRHNaaE5NUXJCaXp6aDN2OFRPc3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DCkFRRUFLSFFKeW0wbVl1aERWQnZjYkpJMHRJTzFpaTFUWS9ITWt3bjdLYXZEazZEOFJNVysrc1BQM3Zwd0MwK1AKRWgwSVBaL1VNL0xKY1I2bjJycFRzWUFNL0NuUUMrZUVUdmZkblVVcnd5cVdUcmJFbG83dU1Vazl5UjBkTjdyeQpxTG04NHF1eitYWFk4NXJGREhVMElXUzFyRTVJUi9KNVprRnl6Q0cxb2FKWU9KZ1hXUmR3RXdNbUpVR002N2M2CnVUTENvdTJ3Z3I4cUlQQ2JqM2RveE9ibEVDcmo5UFM2MGlIM1VRblkzNGVjMkhjNktzWTJHSWtJcVAwemtoRmMKWjVSNzUyemNTSFRFNE45RlFwblFUUjN3MnVYcnFydTV6Z2cvV2IzTkhLcUc0Q0xjVjdqTmh3ajl0Q2RJanpLQwo4WjgyR3JubjR3ZUh3T0hBZ2RDNzZ3SFo5UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    service:
+      name: aws-load-balancer-webhook-service
+      namespace: kube-system
+      path: /mutate-elbv2-k8s-aws-v1beta1-targetgroupbinding
+  failurePolicy: Fail
+  name: mtargetgroupbinding.elbv2.k8s.aws
+  admissionReviewVersions:
+  - v1beta1
+  rules:
+  - apiGroups:
+    - elbv2.k8s.aws
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - targetgroupbindings
+  sideEffects: None
+---
+# Source: aws-load-balancer-controller/templates/webhook.yaml
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: aws-load-balancer-webhook
+  labels:
+    helm.sh/chart: aws-load-balancer-controller-1.1.4
+    app.kubernetes.io/name: aws-load-balancer-controller
+    app.kubernetes.io/instance: legendlegendclusterchartawsloadbalancere71f3739
+    app.kubernetes.io/version: "v2.1.2"
+    app.kubernetes.io/managed-by: Helm
+webhooks:
+- clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURQekNDQWllZ0F3SUJBZ0lRQ1B4UW51T21odWJsa1IvSU50eWFJVEFOQmdrcWhraUc5dzBCQVFzRkFEQXEKTVNnd0pnWURWUVFERXg5aGQzTXRiRzloWkMxaVlXeGhibU5sY2kxamIyNTBjbTlzYkdWeUxXTmhNQjRYRFRJeApNREl4TXpFNU1UWTFObG9YRFRNeE1ESXhNVEU1TVRZMU5sb3dLakVvTUNZR0ExVUVBeE1mWVhkekxXeHZZV1F0ClltRnNZVzVqWlhJdFkyOXVkSEp2Ykd4bGNpMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSktaTzhPNnVDNms0MnRFTXp6TXFSNVA5WTRPOEE3UWJOdmdkR281QkY3VkF3a1E3azhpaFFJcgova0FUc3FYbnRldGlTTXZDR3ZkdjJPdllYU3g1eWlYRzh1Tm95NG9vWTcySS9Wd04zTk85WDY2SnByTEo0aEM4Ci9jTXpwMjVoVFhIL2g3UzJxZjVRQUZxRXhWL240ZnAzOFZpQU1ITWVIQ3REQ1lCTkxGR0RxOS9ENVpEclRSMzgKSUVjNzY4VzNEb1BFeGc3WXB4RkwwczVZY0wraG9tZk9hUm1vYzdFUmhCQ0pMWmZKd2FvMTJpU1dMOUUzaWR1YQpuRmRtWEpmSDVEdlB6TFNVZnhlazJ5VGNpVVRwK2tZWmt6RS8vYk8zUytlTDhiQ2pwbjdtSnpGSkE0RzV1d3l6ClBGQ1RFSkppSmx2eE5abzZYWGNTeXZOaWVBNThkaXNDQXdFQUFhTmhNRjh3RGdZRFZSMFBBUUgvQkFRREFnS2sKTUIwR0ExVWRKUVFXTUJRR0NDc0dBUVVGQndNQkJnZ3JCZ0VGQlFjREFqQVBCZ05WSFJNQkFmOEVCVEFEQVFILwpNQjBHQTFVZERnUVdCQlJEUER6L0VxRHNaaE5NUXJCaXp6aDN2OFRPc3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DCkFRRUFLSFFKeW0wbVl1aERWQnZjYkpJMHRJTzFpaTFUWS9ITWt3bjdLYXZEazZEOFJNVysrc1BQM3Zwd0MwK1AKRWgwSVBaL1VNL0xKY1I2bjJycFRzWUFNL0NuUUMrZUVUdmZkblVVcnd5cVdUcmJFbG83dU1Vazl5UjBkTjdyeQpxTG04NHF1eitYWFk4NXJGREhVMElXUzFyRTVJUi9KNVprRnl6Q0cxb2FKWU9KZ1hXUmR3RXdNbUpVR002N2M2CnVUTENvdTJ3Z3I4cUlQQ2JqM2RveE9ibEVDcmo5UFM2MGlIM1VRblkzNGVjMkhjNktzWTJHSWtJcVAwemtoRmMKWjVSNzUyemNTSFRFNE45RlFwblFUUjN3MnVYcnFydTV6Z2cvV2IzTkhLcUc0Q0xjVjdqTmh3ajl0Q2RJanpLQwo4WjgyR3JubjR3ZUh3T0hBZ2RDNzZ3SFo5UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    service:
+      name: aws-load-balancer-webhook-service
+      namespace: kube-system
+      path: /validate-elbv2-k8s-aws-v1beta1-targetgroupbinding
+  failurePolicy: Fail
+  name: vtargetgroupbinding.elbv2.k8s.aws
+  admissionReviewVersions:
+  - v1beta1
+  rules:
+  - apiGroups:
+    - elbv2.k8s.aws
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - targetgroupbindings
+  sideEffects: None
