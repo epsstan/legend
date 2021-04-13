@@ -1,4 +1,0 @@
----
-serviceAccount:
-  create: false
-clusterName: LegendClusterA6751FE1-16d135652b774b20b84a8c8ba807e8a
